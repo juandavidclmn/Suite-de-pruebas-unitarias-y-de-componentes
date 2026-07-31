@@ -2,6 +2,21 @@
 
 Este proyecto usa **Jest** (vía `jest-expo`) + **@testing-library/react-native** + **MSW** (Mock Service Worker) + **Zod**. Referencia rápida de qué hace cada función usada en `__tests__/`.
 
+## Convención de estructura de pruebas
+
+Este proyecto usa la convención **centralizada**: todos los tests viven bajo una única carpeta raíz `__tests__/`, con subcarpetas por tipo de prueba:
+
+- `__tests__/components/`, `__tests__/hooks/`, `__tests__/utils/` — espejo 1:1 de las carpetas equivalentes en `src/`, para pruebas unitarias y de componente aislado.
+- `__tests__/integration/` — flujos completos que combinan pantalla + hooks + componentes.
+- `__tests__/contract/` — validación de esquema (Zod) de los datos que entran/salen de la API.
+- `__tests__/accessibility/` — pruebas de `accessibilityLabel`/`role`.
+
+**Por qué centralizada y no colocada** (`Componente.test.tsx` junto a `Componente.tsx`):
+
+1. `src/` queda libre de archivos de test. En un proyecto Expo/RN el bundler (Metro) solo empaqueta `src/`, así que no hay riesgo de que un test termine en el build ni hace falta excluirlo aparte.
+2. Categorías como `integration/`, `contract/` y `accessibility/` no le pertenecen a un solo archivo fuente — cruzan varias carpetas de `src/`. Con `__tests__/` centralizado cada tipo de prueba tiene una carpeta propia, sin tener que decidir "junto a cuál archivo va".
+3. Se puede correr un subconjunto por tipo directamente: `npx jest __tests__/accessibility`, `npx jest __tests__/contract`, etc., sin globs adicionales.
+
 ## Estructura de un test
 
 - **`describe(nombre, fn)`** — agrupa tests relacionados (un archivo puede tener varios).

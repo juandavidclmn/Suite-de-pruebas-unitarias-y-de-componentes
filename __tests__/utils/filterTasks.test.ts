@@ -30,3 +30,34 @@ describe('filterTasksByStatus', () => {
     expect(() => filterTasksByStatus(mockTasks, 'invalido')).toThrow();
   });
 });
+
+// ============================================================
+// NUEVOS CASOS DE PRUEBA — Actividad Unidad 2
+// (No modifica nada de lo que ya existía arriba)
+// ============================================================
+describe('filterTasksByStatus — casos nuevos (Actividad Unidad 2)', () => {
+  it('devuelve un arreglo vacío cuando el arreglo de tareas de entrada ya está vacío (valores vacíos)', () => {
+    // Arrange: arreglo de entrada vacío (distinto del caso ya probado de "sin coincidencias")
+    // Act
+    const result = filterTasksByStatus([], 'completed');
+    // Assert
+    expect(result).toEqual([]);
+  });
+
+  it('el resultado contiene el título de la tarea pendiente esperada', () => {
+    // Arrange: mockTasks ya definido arriba
+    // Act
+    const result = filterTasksByStatus(mockTasks, 'pending');
+    const titles = result.map((t) => t.title);
+    // Assert: toContain verifica que el arreglo de títulos incluye el valor esperado
+    expect(titles).toContain('Comprar leche');
+  });
+
+  it('lanza un error en tiempo de ejecución si el arreglo de tareas es null (valor nulo inesperado)', () => {
+    // Arrange: tasks llega como null en runtime aunque el tipo declarado sea Task[]
+    // Act: la función intenta ejecutar tasks.filter(...), que no existe en null
+    // Assert
+    // @ts-expect-error probando un valor null en runtime
+    expect(() => filterTasksByStatus(null, 'completed')).toThrow();
+  });
+});

@@ -21,3 +21,31 @@ describe('TaskList', () => {
     expect(screen.getByText('2 tareas')).toBeTruthy();
   });
 });
+
+// ============================================================
+// NUEVOS CASOS DE PRUEBA — Actividad Unidad 2 (Punto 4: componentes)
+// ============================================================
+describe('TaskList — casos nuevos (Actividad Unidad 2)', () => {
+  it('muestra "1 tarea" en singular cuando solo hay una tarea', async () => {
+    // Caso no cubierto antes: el componente distingue singular/plural, pero solo
+    // el plural ("2 tareas") tenía prueba.
+    await render(<TaskList tasks={[mockTask]} />);
+    expect(screen.getByText('1 tarea')).toBeTruthy();
+  });
+
+  it('el mensaje "No hay tareas aún" aparece y desaparece según cambian las tareas (estado condicional)', async () => {
+    // Arrange: arranca con una tarea, así que el mensaje de lista vacía no debe existir
+    const { rerender } = await render(<TaskList tasks={[mockTask]} />);
+    expect(screen.queryByText('No hay tareas aún')).toBeNull();
+
+    // Act: simulamos que el usuario elimina la única tarea (la lista queda vacía)
+    await rerender(<TaskList tasks={[]} />);
+    // Assert: el mensaje aparece
+    expect(screen.getByText('No hay tareas aún')).toBeTruthy();
+
+    // Act: simulamos que se agrega una tarea nueva
+    await rerender(<TaskList tasks={[mockTask]} />);
+    // Assert: el mensaje desaparece otra vez
+    expect(screen.queryByText('No hay tareas aún')).toBeNull();
+  });
+});
