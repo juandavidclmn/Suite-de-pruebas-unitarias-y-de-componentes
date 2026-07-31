@@ -30,6 +30,10 @@ yarn-error.*
 .DS_Store
 *.pem
 
+# Claude Code local config
+.claude/
+CLAUDE.md
+
 # local env files
 .env*.local
 
