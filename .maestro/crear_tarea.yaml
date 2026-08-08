@@ -1,7 +1,9 @@
 appId: com.taskmanager.app
 ---
 - launchApp
-- assertVisible: "Task Manager"
+- extendedWaitUntil:
+    visible: "Task Manager"
+    timeout: 60000
 - tapOn: "Flujo Todo List"
 - assertVisible: "Nueva tarea"
 - tapOn:

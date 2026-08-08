@@ -14,8 +14,8 @@
     "react-native": "0.86.0",
     "react-native-reanimated": "4.5.0",
     "react-native-safe-area-context": "~5.7.0",
-    "react-native-screens": "4.25.2",
-    "react-native-worklets": "^0.10.2",
+    "react-native-screens": "^4.26.2",
+    "react-native-worklets": "^0.10.3",
     "tailwindcss": "^3.4.19",
     "zod": "^3.25.76"
   },
@@ -26,7 +26,10 @@
     "@testing-library/react-native": "^14.0.1",
     "@types/jest": "^30.0.0",
     "@types/react": "~19.2.2",
+    "@typescript-eslint/parser": "^8.66.0",
     "babel-preset-expo": "^57.0.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "jest": "^29.7.0",
     "jest-expo": "~57.0.1",
     "msw": "^2.14.6",
@@ -39,7 +42,9 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "mock-server": "node scripts/mock-api-server.js",
+    "lint:a11y": "eslint \"src/components/**/*.tsx\" \"src/screens/**/*.tsx\""
   },
   "private": true
 }

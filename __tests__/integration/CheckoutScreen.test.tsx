@@ -53,4 +53,51 @@ describe('CheckoutScreen - Integración', () => {
       expect(screen.getByText('Transacción completada exitosamente')).toBeTruthy();
     });
   });
+
+  it('permite corregir los campos después de un error de validación y completar el pago', async () => {
+    await renderScreen();
+
+    // Primer intento: solo se llenan los datos de usuario, faltan envío y pago
+    await fillAll([
+      ['input-nombre', 'Ana Gómez'],
+      ['input-email', 'ana@correo.com'],
+      ['input-telefono', '3001112233'],
+    ]);
+    await fireEvent.press(screen.getByText('Confirmar pago'));
+    expect(screen.getByText('Completa todos los campos antes de continuar')).toBeTruthy();
+
+    // El usuario corrige completando los campos restantes
+    await fillAll([
+      ['input-direccion', 'Carrera 10 #20-30'],
+      ['input-ciudad', 'Medellín'],
+      ['input-codigo-postal', '050001'],
+      ['input-titular', 'Ana Gómez'],
+      ['input-numero-tarjeta', '4222222222222'],
+      ['input-vencimiento', '11/29'],
+      ['input-cvv', '456'],
+    ]);
+    await fireEvent.press(screen.getByText('Confirmar pago'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Transacción completada exitosamente')).toBeTruthy();
+    });
+    expect(screen.queryByText('Completa todos los campos antes de continuar')).toBeNull();
+  });
+
+  it('mantiene el estado de cada sección aislado del de las demás', async () => {
+    await renderScreen();
+
+    await fill('input-nombre', 'Carlos Ruiz');
+    await fill('input-direccion', 'Avenida Siempre Viva 742');
+    await fill('input-titular', 'Carlos Ruiz');
+
+    // Cada TextInput conserva únicamente el valor de su propia sección,
+    // sin que UserInfoSection, ShippingInfoSection y PaymentInfoSection se pisen entre sí
+    expect(screen.getByTestId('input-nombre').props.value).toBe('Carlos Ruiz');
+    expect(screen.getByTestId('input-direccion').props.value).toBe('Avenida Siempre Viva 742');
+    expect(screen.getByTestId('input-titular').props.value).toBe('Carlos Ruiz');
+    expect(screen.getByTestId('input-email').props.value).toBe('');
+    expect(screen.getByTestId('input-ciudad').props.value).toBe('');
+    expect(screen.getByTestId('input-numero-tarjeta').props.value).toBe('');
+  });
 });

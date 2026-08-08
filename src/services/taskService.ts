@@ -1,6 +1,8 @@
 import { Task } from '../types';
 
-const API_URL = 'https://api.taskmanager.com';
+// En dev/E2E se puede sobreescribir con EXPO_PUBLIC_API_URL para apuntar al
+// servidor mock local (scripts/mock-api-server.js). Ver .maestro/README.md.
+const API_URL = process.env.EXPO_PUBLIC_API_URL ?? 'https://api.taskmanager.com';
 
 export async function fetchTasks(): Promise<Task[]> {
   const res = await fetch(`${API_URL}/tasks`);

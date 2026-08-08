@@ -49,4 +49,63 @@ describe('CreateTaskScreen - Integración', () => {
     });
     expect(screen.queryByText('Tarea que no se guarda')).toBeNull();
   });
+
+  it('maneja una respuesta exitosa con datos vacíos sin romper la pantalla', async () => {
+    // La API responde 201 pero con campos vacíos en el cuerpo (id y title en blanco)
+    server.use(
+      http.post('https://api.taskmanager.com/tasks', () =>
+        HttpResponse.json({ id: '', title: '', status: 'pending' }, { status: 201 })
+      )
+    );
+    await renderScreen();
+
+    await fireEvent.changeText(
+      screen.getByPlaceholderText('Escribe el título de la tarea'),
+      'Tarea con respuesta vacía'
+    );
+    await fireEvent.press(screen.getByText('Guardar'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Tarea creada exitosamente')).toBeTruthy();
+    });
+  });
+
+  it('permite completar y eliminar una tarea recién creada (flujo completo)', async () => {
+    await renderScreen();
+
+    await fireEvent.changeText(
+      screen.getByPlaceholderText('Escribe el título de la tarea'),
+      'Tarea de flujo completo'
+    );
+    await fireEvent.press(screen.getByText('Guardar'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Tarea de flujo completo')).toBeTruthy();
+    });
+
+    // El componente (TaskList/TaskCard), el hook (useCreateTask) y el estado
+    // local interactúan para marcar la tarea como completada
+    await fireEvent.press(
+      screen.getByLabelText('Marcar tarea Tarea de flujo completo como completada')
+    );
+    await waitFor(() => {
+      expect(screen.getByText('✓ Completada')).toBeTruthy();
+    });
+
+    // Pedir eliminación abre el ConfirmDeleteDialog real (sin mockear)
+    await fireEvent.press(screen.getByLabelText('Eliminar tarea Tarea de flujo completo'));
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          '¿Seguro que quieres eliminar "Tarea de flujo completo"? Esta acción no se puede deshacer.'
+        )
+      ).toBeTruthy();
+    });
+    await fireEvent.press(screen.getByLabelText('Confirmar eliminación'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Tarea de flujo completo')).toBeNull();
+    });
+    expect(screen.getByText('No hay tareas aún')).toBeTruthy();
+  });
 });

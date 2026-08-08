@@ -2,7 +2,9 @@ appId: com.taskmanager.app
 ---
 # 1. Abrir la app y entrar al flujo transaccional
 - launchApp
-- assertVisible: "Task Manager"
+- extendedWaitUntil:
+    visible: "Task Manager"
+    timeout: 60000
 - tapOn: "Flujo Transaccional"
 - assertVisible: "Información del usuario"
 
@@ -81,3 +83,4 @@ appId: com.taskmanager.app
     centerElement: true
 - tapOn: "Confirmar pago"
 - assertVisible: "Transacción completada exitosamente"
+    

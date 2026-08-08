@@ -1,0 +1,49 @@
+# .maestro/checkout_validacion.yaml
+# Flujo nuevo: intentar confirmar el pago sin llenar el formulario, verificar
+# el mensaje de validación, completar solo una sección y confirmar que la
+# validación sigue bloqueando el envío hasta llenar todo.
+appId: com.taskmanager.app
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Task Manager"
+    timeout: 60000
+- tapOn: "Flujo Transaccional"
+- assertVisible: "Información del usuario"
+
+# Intento sin llenar nada
+- scrollUntilVisible:
+    element:
+      text: "Confirmar pago"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Confirmar pago"
+- assertVisible: "Completa todos los campos antes de continuar"
+- takeScreenshot: evidencia/checkout_validacion_01_error_vacio
+
+# Volver arriba para completar la sección de usuario
+- scrollUntilVisible:
+    element:
+      id: "input-nombre"
+    direction: UP
+    centerElement: true
+- tapOn:
+    id: "input-nombre"
+- inputText: "Laura Torres"
+- tapOn:
+    id: "input-email"
+- inputText: "laura@correo.com"
+- tapOn:
+    id: "input-telefono"
+- inputText: "3005556677"
+
+# La validación sigue bloqueando porque faltan envío y pago
+- scrollUntilVisible:
+    element:
+      text: "Confirmar pago"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Confirmar pago"
+- assertVisible: "Completa todos los campos antes de continuar"
+- takeScreenshot: evidencia/checkout_validacion_02_error_persiste

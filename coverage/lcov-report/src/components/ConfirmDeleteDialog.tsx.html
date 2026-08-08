@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/hooks/useCreateTask.ts</title>
+    <title>Code coverage report for src/components/ConfirmDeleteDialog.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/hooks</a> useCreateTask.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> ConfirmDeleteDialog.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/30</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>13/15</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -111,119 +111,101 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useRef, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createTask } from '../services/taskService';
-import { Task } from '../types';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { Modal, View, Text, Pressable } from 'react-native';
 &nbsp;
-const STORAGE_KEY = 'tasks';
+interface ConfirmDeleteDialogProps {
+  visible: boolean;
+  taskTitle?: string;
+  onConfirm: () =&gt; void;
+  onCancel: () =&gt; void;
+}
 &nbsp;
-export function useCreateTask() {
-  const [status, setStatus] = useState&lt;'idle' | 'loading' | 'success' | 'error'&gt;('idle');
-  const [tasks, setTasks] = useState&lt;Task[]&gt;([]);
-  const loaded = useRef(false);
-&nbsp;
-  useEffect(() =&gt; {
-    AsyncStorage.getItem(STORAGE_KEY)
-      .then((raw) =&gt; {
-        if (raw) setTasks(JSON.parse(raw));
-      })
-      .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {})
-      .finally(() =&gt; {
-        loaded.current = true;
-      });
-  }, []);
-&nbsp;
-  useEffect(() =&gt; {
-    // ponytail: no persistir antes de cargar, si no el [] inicial pisa lo guardado
-    if (!loaded.current) return;
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)).catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {});
-  }, [tasks]);
-&nbsp;
-  const submit = async (title: string) =&gt; {
-    setStatus('loading');
-    try {
-      const task = await createTask(title);
-      setTasks((prev) =&gt; [task, ...prev]);
-      setStatus('success');
-    } catch {
-      setStatus('error');
-    }
-  };
-&nbsp;
-  const removeTask = (id: string) =&gt; {
-    setTasks((prev) =&gt; prev.filter((t) =&gt; t.id !== id));
-  };
-&nbsp;
-  const toggleTask = (id: string) =&gt; {
-    setTasks((prev) =&gt;
-      prev.map((t) =&gt;
-        t.id === id ? { ...t, status: t.status === 'completed' ? 'pending' : 'completed' } : <span class="branch-1 cbranch-no" title="branch not covered" >t</span>
-      )
-    );
-  };
-&nbsp;
-  return { status, tasks, submit, removeTask, toggleTask };
+export function ConfirmDeleteDialog({
+  visible,
+  taskTitle,
+  onConfirm,
+  onCancel,
+}: ConfirmDeleteDialogProps) {
+  return (
+    &lt;Modal visible={visible} transparent animationType="fade" onRequestClose={onCancel}&gt;
+      &lt;View className="flex-1 items-center justify-center bg-black/40 p-6"&gt;
+        &lt;View className="w-full max-w-sm rounded-xl bg-white p-5"&gt;
+          &lt;Text className="text-lg font-bold text-gray-900"&gt;Eliminar tarea&lt;/Text&gt;
+          &lt;Text className="mt-2 text-sm text-gray-600"&gt;
+            ¿Seguro que quieres eliminar {taskTitle ? `"${taskTitle}"` : 'esta tarea'}? Esta acción no
+            se puede deshacer.
+          &lt;/Text&gt;
+          &lt;View className="mt-5 flex-row justify-end gap-3"&gt;
+            &lt;Pressable
+              onPress={onCancel}
+              accessibilityRole="button"
+              accessibilityLabel="Cancelar"
+              className="rounded-lg px-4 py-2 active:bg-gray-100"
+            &gt;
+              &lt;Text className="text-base font-medium text-gray-600"&gt;Cancelar&lt;/Text&gt;
+            &lt;/Pressable&gt;
+            &lt;Pressable
+              onPress={onConfirm}
+              accessibilityRole="button"
+              accessibilityLabel="Confirmar eliminación"
+              className="rounded-lg bg-red-600 px-4 py-2 active:bg-red-700"
+            &gt;
+              &lt;Text className="text-base font-semibold text-white"&gt;Eliminar&lt;/Text&gt;
+            &lt;/Pressable&gt;
+          &lt;/View&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    &lt;/Modal&gt;
+  );
 }
 &nbsp;</pre></td></tr></table></pre>
 

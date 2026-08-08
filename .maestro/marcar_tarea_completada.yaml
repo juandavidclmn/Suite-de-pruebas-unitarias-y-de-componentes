@@ -1,0 +1,35 @@
+# .maestro/marcar_tarea_completada.yaml
+# Flujo nuevo: crear una tarea, marcarla como completada y verificar
+# que los filtros de la pantalla (Todas / Pendientes / Completadas) reflejan el cambio.
+appId: com.taskmanager.app
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Task Manager"
+    timeout: 60000
+- tapOn: "Flujo Todo List"
+- assertVisible: "Nueva tarea"
+
+# Crear la tarea
+- tapOn:
+    id: "input-titulo"
+- inputText: "Repasar accesibilidad"
+- tapOn: "Guardar"
+- assertVisible: "Tarea creada exitosamente"
+- assertVisible: "Repasar accesibilidad"
+
+# Marcarla como completada
+- tapOn: "Marcar tarea Repasar accesibilidad como completada"
+- assertVisible: "✓ Completada"
+- takeScreenshot: evidencia/marcar_tarea_completada_01_completada
+
+# El filtro "Completadas" debe mostrarla
+- tapOn: "Completadas"
+- assertVisible: "Repasar accesibilidad"
+- takeScreenshot: evidencia/marcar_tarea_completada_02_filtro_completadas
+
+# El filtro "Pendientes" ya no debe mostrarla
+- tapOn: "Pendientes"
+- assertNotVisible: "Repasar accesibilidad"
+- takeScreenshot: evidencia/marcar_tarea_completada_03_filtro_pendientes
