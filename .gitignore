@@ -33,6 +33,9 @@ yarn-error.*
 # local env files
 .env*.local
 
+# config local de Claude Code (permisos, rutas de la máquina)
+.claude/
+
 # typescript
 *.tsbuildinfo
 
